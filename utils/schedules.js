@@ -9,13 +9,14 @@ const apiAxios = axios.create({
     baseURL: `http://openapi.seoul.go.kr:8088/${api.key}`
 });
 
+//  매 시 정각마다 RealtimeAirData 가져오기
 const getData = schedule.scheduleJob('0 0 * * * *', async () => {
     try {
         const { data: { RealtimeCityAir: airData } } = await apiAxios.get('/json/RealtimeCityAir/1/25');
 
         if (airData.RESULT.CODE !== 'INFO-000') console.log(`GET data fail`);
         else {
-            const timeNow = moment().format('YYYYMMDDhhmm');
+            const timeNow = moment().format('YYYYMMDDkkmm');
 
             console.log(`GET data success at ${timeNow}`);
             await AirData.create({ data: airData.row, time: timeNow });
