@@ -8,7 +8,7 @@ const run = () => {
             await mongoose.connect(`${db.url}/admin`, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
-                dbName: 'civic3rdhacker',
+                dbName: 'civichacker3rd',
             });
         } catch (err) {
             console.log(`Error while connect to DB\n${err}`);

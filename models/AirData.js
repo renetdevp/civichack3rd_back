@@ -17,6 +17,7 @@ const dataSchema = new Schema({
         enum: ['PM10', 'PM25', 'O3', 'NO2', 'CO', 'SO2', '점검중'],
     },
 }, {
+    _id: false,
     versionKey: false,
 });
 
